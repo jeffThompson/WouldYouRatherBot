@@ -19,7 +19,7 @@ called OAuthSettings.py, saved in the following format:
     }
 
 WORD LISTS VIA
-+ http://dictionary-thesaurus.com/wordlists.html
+\+ http://dictionary-thesaurus.com/wordlists.html
 
 REQUIRES
 + Natural Language Toolkit (NLTK)
