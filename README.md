@@ -7,8 +7,7 @@ If my math serves:
 2,826 nouns x 769 verbs X 2 combinations = 4,346,388 possible Tweets
 At 2 minutes between = 1509 days = about 4 years of Tweets...
 
-LOAD OAUTH SETTINGS
-
+*LOAD OAUTH SETTINGS*  
 Assumes Twitter OAuth settings, saved in a file
 called OAuthSettings.py, saved in the following format:
 	
@@ -19,11 +18,10 @@ called OAuthSettings.py, saved in the following format:
       'access_token_secret': 'xxxx'
     }
 
-WORD LISTS VIA
-
+*WORD LISTS VIA*  
 \+ http://dictionary-thesaurus.com/wordlists.html
 
-REQUIRES
+*REQUIRES*
 + Natural Language Toolkit (NLTK)
 	- http://nltk.org 
 + OAuthlib
