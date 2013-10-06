@@ -22,9 +22,9 @@ called OAuthSettings.py, saved in the following format:
 + http://dictionary-thesaurus.com/wordlists.html
 
 **REQUIRES**
-+ Natural Language Toolkit (NLTK)
-	- http://nltk.org 
-+ OAuthlib
-	- https://github.com/requests/requests-oauthlib
-+ Python Twitter
-	- https://github.com/bear/python-twitter
++ Natural Language Toolkit (NLTK)  
+http://nltk.org 
++ OAuthlib  
+https://github.com/requests/requests-oauthlib
++ Python Twitter  
+https://github.com/bear/python-twitter
