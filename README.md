@@ -8,6 +8,7 @@ If my math serves:
 At 2 minutes between = 1509 days = about 4 years of Tweets...
 
 LOAD OAUTH SETTINGS
+
 Assumes Twitter OAuth settings, saved in a file
 called OAuthSettings.py, saved in the following format:
 	
@@ -19,6 +20,7 @@ called OAuthSettings.py, saved in the following format:
     }
 
 WORD LISTS VIA
+
 \+ http://dictionary-thesaurus.com/wordlists.html
 
 REQUIRES
