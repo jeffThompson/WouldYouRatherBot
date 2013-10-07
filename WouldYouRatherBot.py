@@ -38,12 +38,14 @@ import random															# for random word pick
 from nltk.stem import WordNetLemmatizer		# get base word
 import twitter														# for posting to Twitter
 
-# % CHANCE OF DEVIATING FROM THE NORMAL SENTENCE STRUCTURE
+# PERCENT CHANCE OF DEVIATING FROM THE NORMAL SENTENCE STRUCTURE
+# 10 = 10% chance, 80 = 80% chance
 chance_quantity = 10			# add quantity word
 chance_location = 10			# add a location
 
 
 # LOAD OAUTH DETAILS FROM FILE TO ACCESS TWITTER
+# see notes at top for format
 consumer_key = settings['consumer_key']
 consumer_secret = settings['consumer_secret']
 access_token_key = settings['access_token_key']
@@ -51,7 +53,9 @@ access_token_secret = settings['access_token_secret']
 
 
 # GENERATE RANDOM POSSIBILITY
-# {verb} a/an {noun}
+# in form of {verb} a/an {noun}, or...
+# {verb} {quantity} of the {plural of noun}, or...
+# {verb} a/an {noun} {location} of the {another noun}
 def possibility():
 	wnl = WordNetLemmatizer()
 	verb = wnl.lemmatize(verbs[random.randrange(0,len(verbs))])
@@ -103,27 +107,28 @@ with open('WordLists/quantityAdverbs.txt') as file:
 tweet = 'Would you rather ' + possibility() + ' or ' + possibility() + '?'
 
 
-# CONNECT TO TWITTER API
+# CONNECT TO TWITTER API, POST and PRINT RESULT
+# catch any errors and let us know
 try:
-	api = twitter.Api(consumer_key = consumer_key, consumer_secret = consumer_secret, access_token_key = access_token_key, access_token_secret = access_token_secret)
-	
+	api = twitter.Api(consumer_key = consumer_key, consumer_secret = consumer_secret, access_token_key = access_token_key, access_token_secret = access_token_secret)	
 
-	# POST and PRINT RESULT
 	print '\n\n' + '"' + tweet + '"\n\n'
 	print 'posting to Twitter...'
 	status = api.PostUpdate(tweet)
 	if status.text == tweet:
 		print '  post successful!'
 	else:
-		print '  error posting, sorry!\n  ' + status.text
+		print '  error posting, sorry! :(\n  ' + status.text
 	print '\n\n'
+
 except twitter.TwitterError:
 	print api.message
 
 
 # SAVE TWEETS TO FILE
+# for posterity
 with open('Tweets.txt', 'a') as file:
 	file.write(tweet + '\n')
 
  
-# DONE!
+# ALL DONE!
