@@ -37,6 +37,9 @@ from OAuthSettings import settings				# import from settings.py
 import random															# for random word pick
 from nltk.stem import WordNetLemmatizer		# get base word
 import twitter														# for posting to Twitter
+from sys import exit											# for exiting when done posting
+import os																	# for loading files
+
 
 # PERCENT CHANCE OF DEVIATING FROM THE NORMAL SENTENCE STRUCTURE
 # 10 = 10% chance, 80 = 80% chance
@@ -82,23 +85,26 @@ def possibility():
 
 
 # LOAD WORD LISTS
+# get current directory, prepend to word list paths
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
 verbs = []
-with open('WordLists/verbs_noRepeat.txt') as file:
+with open(os.path.join(__location__, 'WordLists/verbs_noRepeat.txt')) as file:
 	for line in file:
 		verbs.append(line.strip())
 
 nouns = []
-with open('WordLists/nouns_noRepeat.txt') as file:
+with open(os.path.join(__location__, 'WordLists/nouns_noRepeat.txt')) as file:
 	for line in file:
 		nouns.append(line.strip())
 
 location_adverbs = []
-with open('WordLists/locationAdverbs.txt') as file:
+with open(os.path.join(__location__, 'WordLists/locationAdverbs.txt')) as file:
 	for line in file:
 		location_adverbs.append(line.strip())
 
 quantity_adverbs = []
-with open('WordLists/quantityAdverbs.txt') as file:
+with open(os.path.join(__location__, 'WordLists/quantityAdverbs.txt')) as file:
 	for line in file:
 		quantity_adverbs.append(line.strip())
 
@@ -127,8 +133,9 @@ except twitter.TwitterError:
 
 # SAVE TWEETS TO FILE
 # for posterity
-with open('Tweets.txt', 'a') as file:
+with open(os.path.join(__location__, 'Tweets.txt'), 'a') as file:
 	file.write(tweet + '\n')
 
  
 # ALL DONE!
+exit();
